@@ -13,5 +13,5 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setPosts, addPost } = postsSlice.actions;
+export const { setPosts, addPost, setBookmarks } = postsSlice.actions;
 export default postsSlice.reducer;

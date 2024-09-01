@@ -116,7 +116,10 @@ const CommentsModal = ({ route }) => {
       <ScrollView className="flex-1 p-4">
         {comments.length > 0 ? (
           comments.map((comment) => (
-            <View key={comment._id} className="flex flex-row items-center my-2">
+            <View
+              key={comment?._id}
+              className="flex flex-row items-center my-2"
+            >
               {comment?.author?.profilePicture !== "" ? (
                 <Image
                   source={{ uri: comment?.author?.profilePicture }}
@@ -184,8 +187,37 @@ const CommentsModal = ({ route }) => {
           </Text>
         </TouchableOpacity>
       </View>
+      {/* Modal fo Delete Comment */}
 
-      {/* Modal for confirmation */}
+      <Modal
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View className="flex-1 justify-center items-center bg-transparent bg-opacity-50">
+          <View className="bg-white p-6 rounded-lg w-4/5">
+            <Text className="text-lg font-bold mb-4">Delete Message</Text>
+            <Text className="text-base text-gray-700">
+              Are you sure you want to delete this message? This action cannot
+              be undone.
+            </Text>
+            <View className="flex-row justify-end mt-6">
+              <TouchableOpacity
+                className="mr-4"
+                onPress={() => setModalVisible(false)}
+              >
+                <Text className="text-gray-500">Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                className="bg-red-500 px-4 py-2 rounded-lg"
+                onPress={deleteComment}
+              >
+                <Text className="text-white">Delete</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };

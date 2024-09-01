@@ -217,7 +217,6 @@ const MessageScreen = () => {
         </View>
       )}
 
-      {/* Modal for delete confirmation */}
       <Modal
         transparent={true}
         visible={modalVisible}

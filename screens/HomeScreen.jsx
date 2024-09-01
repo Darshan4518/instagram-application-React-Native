@@ -67,6 +67,7 @@ const HomeScreen = () => {
         Toast.LONG,
         Toast.BOTTOM
       );
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -88,11 +89,6 @@ const HomeScreen = () => {
 
     // return () => clearInterval(interval);
   }, [currentPage, dispatch, user]);
-
-  useEffect(() => {
-    getPosts(1);
-    console.log("hii");
-  }, []);
 
   return (
     <SafeAreaView>

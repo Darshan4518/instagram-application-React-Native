@@ -87,9 +87,6 @@ const Post = ({ post }) => {
       );
     }
   };
-  const handlePress = () => {
-    setModalVisible(!isModalVisible);
-  };
 
   return (
     <View className="space-y-4 mb-6">
@@ -112,7 +109,7 @@ const Post = ({ post }) => {
             {post?.author?.userName}
           </Text>
         </View>
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity onPress={() => setModalVisible(!isModalVisible)}>
           <Entypo name="dots-three-vertical" size={20} color="black" />
         </TouchableOpacity>
       </View>
@@ -199,7 +196,7 @@ const Post = ({ post }) => {
               <TouchableOpacity onPress={deletePost}>
                 <View className="flex flex-row items-center ">
                   <MaterialIcons name="delete-outline" size={30} color="red" />
-                  <Text className="ml-2 text-lg font-bold text-red-200">
+                  <Text className="ml-2 text-lg font-bold text-red-600">
                     Delete Post
                   </Text>
                 </View>
@@ -226,13 +223,13 @@ const Post = ({ post }) => {
               <TouchableOpacity>
                 <View className="flex flex-row items-center ">
                   <Octicons name="report" size={25} color="red" />
-                  <Text className="ml-3 text-lg font-bold text-red-200">
+                  <Text className="ml-3 text-lg font-bold text-red-600">
                     Report
                   </Text>
                 </View>
               </TouchableOpacity>
             )}
-            <TouchableOpacity onPress={handlePress}>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
               <View className="flex flex-row items-center">
                 <MaterialCommunityIcons name="close" size={30} color="blue" />
                 <Text className="ml-2 text-lg font-bold text-blue-800">
